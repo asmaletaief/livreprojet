@@ -3,8 +3,19 @@
 {% block title %}Livre{% endblock %}
 
 {% block body %}
-    <h1>Livre</h1>
+    <h1>Livre X</h1>
+    <h1>test show role user : </h1>
+    {% if is_granted('ROLE_USER') %}
+    <div class="user-section"> hello user
+        <!-- User-specific content -->
+    </div>
+{% endif %}
 
+{% if is_granted('ROLE_ADMIN') %}
+    <div class="admin-section">
+        hello admin
+    </div>
+{% endif %}
     <table class="table">
         <tbody>
             <tr>
