@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block body %} 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Achat de Livres</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        header {
+            background-color:white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            color: #333333;
+            font-size: 36px;
+            font-family: Arial, sans-serif;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            color: #666666;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenue dans notre boutique en ligne de livres</h1>
+        <p>Découvrez notre vaste collection de livres dans différents genres et thématiques. Que vous soyez un passionné de littérature, un étudiant en recherche de connaissances ou un amateur de lectures divertissantes, nous avons des livres pour satisfaire tous les goûts.</p>
+    </header>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <p>Découvrez notre vaste collection de livres dans différents genres et thématiques. Que vous soyez un passionné de littérature, un étudiant en recherche de connaissances ou un amateur de lectures divertissantes, nous avons des livres pour satisfaire tous les goûts.</p>
+                <p>Parcourez notre catalogue et trouvez les derniers best-sellers, les classiques intemporels, les ouvrages scientifiques, les livres pour enfants et bien plus encore. Notre équipe de passionnés de lecture a soigneusement sélectionné chaque titre pour vous offrir une expérience de lecture enrichissante.</p>
+                <p>Profitez de nos offres spéciales, de réductions exclusives et de la facilité de commande en ligne. Nous vous garantissons une livraison rapide et sécurisée directement à votre porte. N'hésitez pas à nous contacter si vous avez des questions ou des demandes spécifiques. Nous sommes là pour vous aider à trouver le livre parfait.</p>
+                <a href="/books" class="btn btn-primary">Explorer notre catalogue</a>
+            </div>
+            <div class="col-md-6">
+                <img src="img/livre.png" alt="Livres" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <footer class="bg-light text-center py-3 mt-5">
+        <p>&copy; 2023 Votre Boutique de Livres en Ligne. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
+
+{% endblock %}
