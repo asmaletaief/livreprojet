@@ -41,27 +41,27 @@ class RegistrationFormType extends AbstractType
                 #'multiple' => false,
                 #'expanded' => true, // this makes the choices to be presented as radio buttons
             #])
-            //->add(
-                //$builder->create('roles', ChoiceType::class, [
-                //    'choices' => [
-              //          'User' => 'ROLE_USER',
-            //            'Auteur' => 'ROLE_ADMIN',
+            ->add(
+                $builder->create('roles', ChoiceType::class, [
+                    'choices' => [
+                        'User' => 'ROLE_USER',
+                        'Auteur' => 'ROLE_ADMIN',
                         // other roles...
-                   // ],
-                    //'mapped' => true,
-                    //'multiple' => false,
-                  //  'expanded' => true, // this makes the choices to be presented as radio buttons
-                //])->addModelTransformer(new CallbackTransformer(
-                    //function ($rolesArray) {
-                       //  // transform the array to a string
-                     //    return count($rolesArray)? $rolesArray[0]: null;
-                   // },
-                 //   function ($rolesString) {
+                    ],
+                    'mapped' => true,
+                    'multiple' => false,
+                    'expanded' => true, // this makes the choices to be presented as radio buttons
+                ])->addModelTransformer(new CallbackTransformer(
+                    function ($rolesArray) {
+                         // transform the array to a string
+                         return count($rolesArray)? $rolesArray[0]: null;
+                    },
+                    function ($rolesString) {
                          // transform the string back to an array
-               //          return [$rolesString];
-             //       }
-            //    ))
-          //  )
+                         return [$rolesString];
+                    }
+                ))
+            )
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
