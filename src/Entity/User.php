@@ -183,4 +183,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->getPrenom(); // Replace with the appropriate property to represent the Livre entity as a string
+    }
 }

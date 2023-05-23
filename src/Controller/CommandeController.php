@@ -1,14 +1,14 @@
 <?php
-
 namespace App\Controller;
 
 use App\Entity\Commande;
 use App\Form\CommandeType;
 use App\Repository\CommandeRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/commande')]
 class CommandeController extends AbstractController
@@ -22,14 +22,23 @@ class CommandeController extends AbstractController
     }
 
     #[Route('/new', name: 'app_commande_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CommandeRepository $commandeRepository): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $commande = new Commande();
         $form = $this->createForm(CommandeType::class, $commande);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $commandeRepository->save($commande, true);
+            $livres = $commande->getLivre();
+
+            // Persistez les livres associés à la commande
+            foreach ($livres as $livre) {
+                $entityManager->persist($livre);
+            }
+
+            // Persistez la commande
+            $entityManager->persist($commande);
+            $entityManager->flush();
 
             return $this->redirectToRoute('app_commande_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -73,6 +82,5 @@ class CommandeController extends AbstractController
             $commandeRepository->remove($commande, true);
         }
 
-        return $this->redirectToRoute('app_commande_index', [], Response::HTTP_SEE_OTHER);
-    }
-}
+        return $this->redirectToRoute('app_commande_index', [], Response:HTTP_SEE_OTHER);
+    }}

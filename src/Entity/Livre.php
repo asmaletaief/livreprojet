@@ -148,4 +148,8 @@ class Livre
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->getNomLivre(); // Replace with the appropriate property to represent the Livre entity as a string
+    }
 }

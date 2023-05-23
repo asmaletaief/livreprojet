@@ -45,12 +45,13 @@ class RegistrationFormType extends AbstractType
                 $builder->create('roles', ChoiceType::class, [
                     'choices' => [
                         'User' => 'ROLE_USER',
+                        'Auteur' => 'ROLE_ADMIN',
                         // other roles...
                     ],
                     'mapped' => true,
                     'multiple' => false,
                     'expanded' => true, // this makes the choices to be presented as radio buttons
-                    'Auteur' => 'ROLE_ADMIN',
+                   
                 ])->addModelTransformer(new CallbackTransformer(
                     function ($rolesArray) {
                          // transform the array to a string
